@@ -1,5 +1,13 @@
+/**
+ * A class that contains various sorting algorithms.
+ */
 public class Sort
 {
+    /**
+     * Sorts an array using the merge sort algorithm.
+     * @param array The array to sort.
+     * @return The sorted array.
+     */
     public static int[] mergeSort(int[] array)
     {
         if (array.length <= 1)
@@ -21,6 +29,12 @@ public class Sort
         return merge(left, right);
     }
 
+    /**
+     * Merges two sorted arrays into one sorted array.
+     * @param left The left array.
+     * @param right The right array.
+     * @return The merged array.
+     */
     private static int[] merge(int[] left, int[] right)
     {
         int[] result = new int[left.length + right.length];
@@ -46,8 +60,28 @@ public class Sort
         return result;
     }
 
+    /**
+     * Sorts an array using the selection sort algorithm.
+     * @param array The array to sort.
+     * @return The sorted array.
+     */
     public static int[] selectionSort(int[] array)
     {
-        return null;
+        for (int i = 0; i < array.length; i++)
+        {
+            int minIndex = i;
+
+            for (int j = i + 1; j < array.length; j++)
+            {
+                if (array[j] < array[minIndex])
+                    minIndex = j;
+            }
+
+            int temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
+        }
+
+        return array;
     }
 }
