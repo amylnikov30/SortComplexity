@@ -1,13 +1,13 @@
-import java.util.Arrays;
+import stats.Benchmarks;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        System.out.println(Arrays.toString(Sort.mergeSort(new int[]{9, 3, 5, 2, 1, 7, 4, 6, 8, 0})));
-        System.out.println(Arrays.toString(Sort.mergeSort(new int[]{3, 5, 2, 1, 7, 4, 6, 8, 0})));
+        System.out.println("Merge sort: ");
+        Benchmarks.collectDataMergeSort(0, 2, 10, 10000);
 
-        System.out.println(Arrays.toString(Sort.selectionSort(new int[]{9, 3, 5, 2, 1, 7, 4, 6, 8, 0})));
-        System.out.println(Arrays.toString(Sort.selectionSort(new int[]{3, 5, 2, 1, 7, 4, 6, 8, 0})));
+        System.out.println("\nSelection sort: ");
+        Benchmarks.collectDataSelectionSort(2, 10, 10000);
     }
 }
