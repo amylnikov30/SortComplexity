@@ -59,16 +59,32 @@ public class Benchmarks
     {
         final long startTime = System.nanoTime();
         Sort.mergeSort(array);
+        final long time = System.nanoTime() - startTime;
 
-        return System.nanoTime() - startTime;
+        return time;
+    }
+
+    public static long testMergeSort(int arrSize)
+    {
+        final int[] array = generateRandomArray(arrSize);
+        
+        return testMergeSort(array);
     }
 
     public static long testSelectionSort(int[] array)
     {
         final long startTime = System.nanoTime();
         Sort.selectionSort(array);
+        final long time = System.nanoTime() - startTime;
 
-        return System.nanoTime() - startTime;
+        return time;
+    }
+
+    public static long testSelectionSort(int arrSize)
+    {
+        final int[] array = generateRandomArray(arrSize);
+        
+        return testSelectionSort(array);
     }
 
     public static void collectDataMergeSort(int startSize, int base, int x, int n)
@@ -133,5 +149,14 @@ public class Benchmarks
             sum += time;
 
         return sum / collected.length;
+    }
+
+    private static int[] generateRandomArray(int arrSize)
+    {
+        int[] array = new int[arrSize];
+        for (int i = 0; i < array.length; i++)
+            array[i] = (int) (Math.random() * 1000);
+        
+        return array;
     }
 }
