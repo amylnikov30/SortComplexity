@@ -5,6 +5,9 @@ import impl.Sort;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * A class that contains methods for benchmarking sorting algorithms.
+ */
 public class Benchmarks
 {
     public static void main(String[] args) throws IOException
@@ -23,6 +26,12 @@ public class Benchmarks
         fw.close();
     }
 
+    /**
+     * Returns the average time it takes to sort an array of size arrSize using merge sort.
+     * @param n The number of times to run the test.
+     * @param arrSize The size of the array to sort.
+     * @return The average time it takes to sort an array of size arrSize using merge sort.
+     */
     public static long averageMergeSortTime(int n, int arrSize)
     {
         long sum = 0;
@@ -39,6 +48,12 @@ public class Benchmarks
         return sum / n;
     }
 
+    /**
+     * Returns the average time it takes to sort an array of size arrSize using selection sort.
+     * @param n The number of times to run the test.
+     * @param arrSize The size of the array to sort.
+     * @return The average time it takes to sort an array of size arrSize using selection sort.
+     */
     public static long averageSelectionSortTime(int n, int arrSize)
     {
         long sum = 0;
@@ -55,6 +70,11 @@ public class Benchmarks
         return sum / n;
     }
 
+    /**
+     * Times the merge sort algorithm on an array.
+     * @param array The array to sort.
+     * @return The time it took to sort the array.
+     */
     public static long testMergeSort(int[] array)
     {
         final long startTime = System.nanoTime();
@@ -64,6 +84,11 @@ public class Benchmarks
         return time;
     }
 
+    /**
+     * Times the merge sort algorithm on a randomly-generated array of size arrSize.
+     * @param arrSize The size of the array to sort.
+     * @return The time it took to sort the array.
+     */
     public static long testMergeSort(int arrSize)
     {
         final int[] array = generateRandomArray(arrSize);
@@ -71,6 +96,11 @@ public class Benchmarks
         return testMergeSort(array);
     }
 
+    /**
+     * Times the selection sort algorithm on an array.
+     * @param array The array to sort.
+     * @return The time it took to sort the array.
+     */
     public static long testSelectionSort(int[] array)
     {
         final long startTime = System.nanoTime();
@@ -80,6 +110,11 @@ public class Benchmarks
         return time;
     }
 
+    /**
+     * Times the selection sort algorithm on a randomly-generated array of size arrSize.
+     * @param arrSize The size of the array to sort.
+     * @return The time it took to sort the array.
+     */
     public static long testSelectionSort(int arrSize)
     {
         final int[] array = generateRandomArray(arrSize);
@@ -87,6 +122,13 @@ public class Benchmarks
         return testSelectionSort(array);
     }
 
+    /**
+     * Collects data on the merge sort algorithm.
+     * @param startSize The starting size of the array.
+     * @param base The base of the exponent.
+     * @param x The maximum exponent.
+     * @param n The number of times to run the test at each size.
+     */
     public static void collectDataMergeSort(int startSize, int base, int x, int n)
     {
         long[] times = new long[x+1];
@@ -115,6 +157,12 @@ public class Benchmarks
 //            System.out.println("n = " + (startSize + (int) Math.pow(base, i)) + ": " + times[i] + " nanoseconds");
     }
 
+    /**
+     * Collects data on the selection sort algorithm.
+     * @param base The base of the exponent.
+     * @param x The maximum exponent.
+     * @param n The number of times to run the test at each size.
+     */
     public static void collectDataSelectionSort(int base, int x, int n)
     {
         long[] times = new long[x+1];
@@ -140,6 +188,11 @@ public class Benchmarks
             System.out.println("n = " + (int) Math.pow(base, i) + ": " + times[i] + " nanoseconds");
     }
 
+    /**
+     * Returns the average of an array of longs.
+     * @param collected The array of longs.
+     * @return The average of the array of longs.
+     */
     private static long average(long[] collected)
     {
         long sum = 0;
@@ -150,6 +203,11 @@ public class Benchmarks
         return sum / collected.length;
     }
 
+    /**
+     * Generates a random array of size arrSize.
+     * @param arrSize The size of the array to generate.
+     * @return The generated array.
+     */
     private static int[] generateRandomArray(int arrSize)
     {
         int[] array = new int[arrSize];
