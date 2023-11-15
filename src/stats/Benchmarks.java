@@ -115,7 +115,6 @@ public class Benchmarks
 //            System.out.println("n = " + (startSize + (int) Math.pow(base, i)) + ": " + times[i] + " nanoseconds");
     }
 
-    // TODO: Add startSize parameter and its functionality.
     public static void collectDataSelectionSort(int base, int x, int n)
     {
         long[] times = new long[x+1];
